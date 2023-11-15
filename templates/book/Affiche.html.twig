@@ -1,0 +1,34 @@
+<h1>List Books</h1>
+<table border="1">
+    <tr>
+        <th>Title</th>
+
+        <th>Publication date</th>
+        <th>published</th>
+        <th>category</th>
+
+        <th>author</th>
+        <th>Actions</th>
+    </tr>
+
+
+    <tr>  {% for b in publishedBooks %} </tr>
+    <td>{{ b.title }}</td>
+    <td>{{ b.publicationDate | date('M-d-Y') }}</td>
+    <td> {{b.published }}</td>
+
+    <td> {{b.category }}</td>
+    <td>{{ b.author.username }}</td>
+   <td>
+
+    <a href="{{ path('app_editBook', {'ref': b.ref}) }}">edit</a>
+ <a href="{{ path('app_deleteBook', {'ref': b.ref}) }}">delete</a>
+        <a href="{{ path('app_detailBook', {'ref': b.ref}) }}">detail</a>
+    </td>
+
+
+
+    {% endfor %}
+
+    <p>Number of published books : {{ numPublishedBooks }}</p>
+    <p>Number of Unpublished books : {{ numUnPublishedBooks }}</p>

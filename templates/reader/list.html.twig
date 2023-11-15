@@ -1,0 +1,32 @@
+
+<h1>List Readers</h1>
+<table border="1">
+<tr>
+    <th>id</th>
+    <th>Username</th>
+    <th>Books</th>
+    <th>Actions</th>
+
+</tr>
+<tr> {% for a in reader %} </tr>
+<td> {{a.id}} </td>
+<td> {{a.username}} </td>
+    <td>
+                
+                    {% for book in a.getbooks() %}
+                        {{ book.title }}
+                    {% endfor %}
+                
+    </td>
+    <td>
+        <a href="{{ path('app_reader_edit', {'id': a.id}) }}">edit</a>
+        <a href="{{ path('app_reader_delete', {'id': a.id}) }}">delete</a>
+    </td>
+
+
+
+
+{% endfor %}
+
+
+</table>

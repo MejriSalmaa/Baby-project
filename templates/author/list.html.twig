@@ -1,0 +1,40 @@
+
+
+"le nombre des authors ="
+{{authors|length}}  
+<table border="1">
+<tr>
+<th> id</th>
+<th>picture </th>
+<th> username</th>
+<th> email</th>
+<th>nb_books </th>
+<th> Lien </th>
+
+</tr>
+{% for author in authors   %}
+<tr>
+<td>{{author.id}} </td>
+<td> <img src="{{author.picture}}"/>
+</td>
+<td>{{author.username|upper}} </td>
+<td>{{author.email}} </td>
+<td> {{author.nb_books}}</td>
+<td><a href="{{ path('detailAuthor', {'id': author.id}) }}"/> Details</td>
+
+
+</tr>
+
+{% else %}
+<h1>"le tableau est vide "</h1>
+{% endfor %}
+
+</table>
+
+{% set somme=0 %}
+
+{% for author in authors   %}
+{% set somme=somme+author.nb_books %}
+{% endfor %}
+
+le nombre total des livre : {{somme}}
